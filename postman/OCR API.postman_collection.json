@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "90f30f92-7830-432a-8fe5-dfdef8d92e98",
+		"name": "OCR API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43819293",
+		"_collection_link": "https://samyakrajsubedi.postman.co/workspace/Samyak-Raj-Subedi's-Workspace~b3afd5f4-f828-461d-8e85-1ceee5cd5af2/collection/43819293-90f30f92-7830-432a-8fe5-dfdef8d92e98?action=share&source=collection_link&creator=43819293"
+	},
+	"item": [
+		{
+			"name": "Bulk Upload Images",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pages",
+							"type": "file",
+							"src": [
+								"/C:/Users/Acer/OneDrive/Pictures/Screenshots/42-1.png",
+								"/C:/Users/Acer/OneDrive/Pictures/Screenshots/42-2.png",
+								"/C:/Users/Acer/OneDrive/Pictures/Screenshots/45-1.png",
+								"/C:/Users/Acer/OneDrive/Pictures/Screenshots/45-2.png"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/save-page-text",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"save-page-text"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
