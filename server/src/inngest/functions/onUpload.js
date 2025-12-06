@@ -1,6 +1,9 @@
 import { inngest } from '../../Config/inngest.js';
 import { Page } from '../../Models/page.model.js';
-import { extractNepaliText } from '../../Services/ai.services.js';
+import {
+  extractNepaliText,
+  formatOCRExtractedNepaliContent,
+} from '../../Services/ai.services.js';
 
 import { saveAsTxt } from '../../Utils/saveAsTxt.js';
 
@@ -53,11 +56,19 @@ const onUpolad = inngest.createFunction(
           const aggregatedText = pages
             .map((page) => page.translatedText)
             .join('\n \n');
+
+          const formattedText = await formatOCRExtractedNepaliContent(aggregatedText);
+          console.log(formattedText);
+          
+          if (!formattedText) {
+            throw Error('Error Formatting Text');
+          }
           await saveAsTxt({
             fileName: bookIdentifier,
-            fileContent: aggregatedText,
+            fileContent: formattedText,
           });
-          console.log('Aggregated all pages of book no :', bookIdentifier);
+          
+          console.log('Text Formatted and Aggregated of book no :', bookIdentifier);
         }
       });
       return { success: true };
