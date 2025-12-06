@@ -39,6 +39,7 @@ const onUpolad = inngest.createFunction(
           await Page.findByIdAndUpdate(page._id.toString(), {
             translatedText,
           });
+          console.log('Extracted text and saved in db :', page.originalName);
         }
       });
 
@@ -56,6 +57,7 @@ const onUpolad = inngest.createFunction(
             fileName: bookIdentifier,
             fileContent: aggregatedText,
           });
+          console.log('Aggregated all pages of book no :', bookIdentifier);
         }
       });
       return { success: true };
