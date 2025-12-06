@@ -57,9 +57,10 @@ const onUpolad = inngest.createFunction(
             .map((page) => page.translatedText)
             .join('\n \n');
 
-          const formattedText = await formatOCRExtractedNepaliContent(aggregatedText);
-          console.log(formattedText);
-          
+          const formattedText = await formatOCRExtractedNepaliContent(
+            aggregatedText
+          );
+
           if (!formattedText) {
             throw Error('Error Formatting Text');
           }
@@ -67,8 +68,11 @@ const onUpolad = inngest.createFunction(
             fileName: bookIdentifier,
             fileContent: formattedText,
           });
-          
-          console.log('Text Formatted and Aggregated of book no :', bookIdentifier);
+
+          console.log(
+            'Text Formatted and Aggregated of book no :',
+            bookIdentifier
+          );
         }
       });
       return { success: true };
