@@ -4,7 +4,7 @@ dotenv.config();
 
 const mongodb = async () => {
   mongoose
-    .connect(process.env.MONGO_URL)
+    .connect(process.env.MONGO_URL,{dbName:"OCR-API"})
     .then(() => {
       console.log('✅ Success connecting to MongoDB');
     })
