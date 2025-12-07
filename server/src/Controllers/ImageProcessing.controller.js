@@ -5,11 +5,12 @@ import { ApiResponse } from '../Utils/api-response.js';
 const bulkUpload = async (req, res) => {
   try {
     const files = req.files;
+    if(!files){
+       return res.status(400).json(new ApiError(400, 'Images are required'));
+    }
     console.log(files);
     
-    if (!files.length) {
-      return res.status(400).json(new ApiError(400, 'Images are required'));
-    }
+   
     for (const pageMetadata of files) {
       console.log(pageMetadata.originalname);
       
